@@ -15,6 +15,7 @@
 
     <properties>
         <spring-boot.version>2.4.4</spring-boot.version>
+        <dubbo.version>2.7.3</dubbo.version>
     </properties>
 
     <build>
@@ -45,6 +46,12 @@
                 <artifactId>spring-boot-starter-test</artifactId>
                 <version>${spring-boot.version}</version>
                 <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo</artifactId>
+                <version>${dubbo.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

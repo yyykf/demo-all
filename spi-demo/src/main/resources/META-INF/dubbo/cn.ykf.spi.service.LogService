@@ -1,0 +1,4 @@
+# 第一个实现类的扩展名为 log4j
+log4j=cn.ykf.spi.service.impl.Log4j
+# 第二个实现类的扩展名为 logback
+logback=cn.ykf.spi.service.impl.Logback
