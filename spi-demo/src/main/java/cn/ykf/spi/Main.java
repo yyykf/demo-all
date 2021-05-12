@@ -31,6 +31,9 @@ public class Main {
         iterator.forEachRemaining(log -> log.log("hello world~"));
     }
 
+    /**
+     * dubbo spi 实现
+     */
     private static void dubboSpi() {
         // 加载实现类
         ExtensionLoader<LogService> loader = ExtensionLoader.getExtensionLoader(LogService.class);
