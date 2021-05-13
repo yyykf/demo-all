@@ -11,6 +11,7 @@
     <modules>
         <module>mockito-demo</module>
         <module>spi-demo</module>
+        <module>dubbo-demo</module>
     </modules>
 
     <properties>
@@ -33,13 +34,19 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- 内部依赖 -->
+            <dependency>
+                <groupId>cn.ykf</groupId>
+                <artifactId>provider</artifactId>
+                <version>${version}</version>
+            </dependency>
+
             <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter</artifactId>
                 <version>${spring-boot.version}</version>
             </dependency>
-
             <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
@@ -47,10 +54,16 @@
                 <version>${spring-boot.version}</version>
                 <scope>test</scope>
             </dependency>
-
+            <!-- dubbo -->
             <dependency>
                 <groupId>org.apache.dubbo</groupId>
                 <artifactId>dubbo</artifactId>
+                <version>${dubbo.version}</version>
+            </dependency>
+            <!-- zookeeper -->
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-dependencies-zookeeper</artifactId>
                 <version>${dubbo.version}</version>
             </dependency>
         </dependencies>
