@@ -8,9 +8,9 @@ import cn.ykf.service.DemoService;
  * @author YuKaiFan <yukf@pvc123.com>
  * @date 2021/5/7
  */
-
 public class DemoServiceImpl implements DemoService {
 
+    @Override
     public String hello(String name) {
         return "Hello," + name;
     }
