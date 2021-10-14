@@ -13,6 +13,7 @@
         <module>spi-demo</module>
         <module>dubbo-demo</module>
         <module>jdk-demo</module>
+        <module>design-pattern-demo</module>
     </modules>
 
     <properties>
