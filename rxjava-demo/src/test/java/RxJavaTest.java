@@ -15,7 +15,7 @@ import java.util.Arrays;
 public class RxJavaTest {
 
     /** 观察者 */
-    private final Subscriber<String> subscriber = new Subscriber<String>() {
+    private final Subscriber<Object> subscriber = new Subscriber<Object>() {
         @Override
         public void onCompleted() {
             System.out.println("done.");
@@ -27,7 +27,7 @@ public class RxJavaTest {
         }
 
         @Override
-        public void onNext(String s) {
+        public void onNext(Object    s) {
             System.out.println("Received: " + s);
         }
     };
@@ -60,6 +60,23 @@ public class RxJavaTest {
     void testFrom() {
         // from 可以从一个数据源中逐个发布数据
         Observable<String> observable = Observable.from(Arrays.asList("data1", "data2", "data3", "data4"));
+
+        observable.subscribe(subscriber);
+    }
+
+    @Test
+    @DisplayName("数据加工")
+    void testOperator() {
+        Observable<Integer> observable = Observable.just("data")
+                .map(s -> {
+                    // 对数据进行加工处理
+                    System.out.println("Start Changing Data.");
+                    return s + "(changed)";
+                })
+                // 可以多次加工处理
+                .map(String::toUpperCase)
+                // 也可以和Stream流一样，进行类型转换
+                .map(s -> 1);
 
         observable.subscribe(subscriber);
     }
