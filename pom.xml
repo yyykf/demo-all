@@ -15,6 +15,7 @@
         <module>jdk-demo</module>
         <module>design-pattern-demo</module>
         <module>limiter-demo</module>
+        <module>rxjava-demo</module>
     </modules>
 
     <properties>
