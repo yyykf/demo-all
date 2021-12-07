@@ -5,7 +5,7 @@ import cn.ykf.service.DemoService;
 /**
  * Demo Service Implemention
  *
- * @author YuKaiFan <yukf@pvc123.com>
+ * @author YuKaiFan
  * @date 2021/5/7
  */
 public class DemoServiceImpl implements DemoService {

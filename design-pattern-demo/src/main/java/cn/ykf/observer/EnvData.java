@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * 环境主体，被观察者
  *
- * @author YuKaiFan <yukf@pvc123.com>
+ * @author YuKaiFan
  * @date 2021/10/14
  */
 public class EnvData implements Subject {

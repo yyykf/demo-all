@@ -9,7 +9,7 @@ import java.util.*;
 /**
  * 主类
  *
- * @author YuKaiFan <yukf@pvc123.com>
+ * @author YuKaiFan
  * @date 2021/5/12
  */
 public class Main {

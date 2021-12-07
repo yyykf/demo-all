@@ -7,7 +7,7 @@ import java.util.concurrent.CountDownLatch;
 /**
  * 服务提供者
  *
- * @author YuKaiFan <yukf@pvc123.com>
+ * @author YuKaiFan
  * @date 2021/5/13
  */
 public class ProviderApplication {

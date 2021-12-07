@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * 启动类
  *
- * @author YuKaiFan <yukf@pvc123.com>
+ * @author YuKaiFan
  * @date 2021/12/7
  */
 @SpringBootApplication

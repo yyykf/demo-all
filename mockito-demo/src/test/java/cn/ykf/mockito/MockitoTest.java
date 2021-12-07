@@ -15,7 +15,7 @@ import static org.mockito.Mockito.*;
 /**
  * Mockito Demo
  *
- * @author YuKaiFan <yukf@pvc123.com>
+ * @author YuKaiFan
  * @date 2021/5/7
  */
 @SpringBootTest(classes = MockitoTestApplication.class)

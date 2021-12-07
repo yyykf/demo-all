@@ -3,7 +3,7 @@ package cn.ykf.observer;
 /**
  * 观察者
  *
- * @author YuKaiFan <yukf@pvc123.com>
+ * @author YuKaiFan
  * @date 2021/10/14
  */
 public interface Observer {

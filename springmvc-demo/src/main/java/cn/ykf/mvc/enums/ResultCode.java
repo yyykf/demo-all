@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 /**
  * 响应码
  *
- * @author YuKaiFan <yukf@pvc123.com>
+ * @author YuKaiFan
  * @date 2021/12/7
  */
 public enum ResultCode implements BaseEnum {

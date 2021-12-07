@@ -1,14 +1,17 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import rx.Observable;
+import rx.Single;
 import rx.Subscriber;
+import rx.subjects.ReplaySubject;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
 /**
  * RxJava Demo
  *
- * @author YuKaiFan <yukf@pvc123.com>
+ * @author YuKaiFan
  * @date 2021/10/28
  * @link <a href="https://factoryhr.medium.com/understanding-java-rxjava-for-beginners-5eacb8de12ca"/>
  */
@@ -27,7 +30,7 @@ public class RxJavaTest {
         }
 
         @Override
-        public void onNext(Object    s) {
+        public void onNext(Object s) {
             System.out.println("Received: " + s);
         }
     };
@@ -35,15 +38,46 @@ public class RxJavaTest {
     @Test
     @DisplayName("简单使用")
     void testSimpleUsage() {
-        // 创建被观察者 todo 所以是怎么样持续地向订阅者发送数据的呢？
+        // 创建被观察者 todo hystrix 怎么通过该机制来实现滑动时间窗口的？
         Observable<String> myObservable = Observable.create(subscriber -> {
-            // 订阅的时候开始传送数据
-            subscriber.onNext("data");
-            subscriber.onCompleted();
+            for (int i = 0; i < 50; i++) {
+                // 当有订阅时会阻塞当前线程
+                if (!subscriber.isUnsubscribed()) {
+                    subscriber.onNext("data" + i);
+                }
+            }
+
+            if (!subscriber.isUnsubscribed()) {
+                subscriber.onCompleted();
+            }
         });
 
         myObservable.subscribe(subscriber);
 
+        System.out.println("Everything is done.");
+    }
+
+    @Test
+    void testNonBlocking() {
+        // 创建被观察者 todo hystrix 怎么通过该机制来实现滑动时间窗口的？
+        Observable<String> myObservable = Observable.create(subscriber -> {
+            new Thread(() -> {
+                for (int i = 0; i < 50; i++) {
+                    // 当有订阅时会阻塞当前线程
+                    if (!subscriber.isUnsubscribed()) {
+                        subscriber.onNext("data" + i);
+                    }
+                }
+
+                if (!subscriber.isUnsubscribed()) {
+                    subscriber.onCompleted();
+                }
+            }).start();
+        });
+
+        myObservable.subscribe(subscriber);
+
+        System.out.println("Everything is done.");
     }
 
     @Test
@@ -79,5 +113,23 @@ public class RxJavaTest {
                 .map(s -> 1);
 
         observable.subscribe(subscriber);
+    }
+
+    @Test
+    void testSingle() {
+        Single.just("emmit once").map(s -> s + ".").subscribe(subscriber);
+
+        Single.error(new RuntimeException()).subscribe(subscriber);
+    }
+
+    @Test
+    void testSubject() {
+        Observable<Serializable> observable = Observable.from(Arrays.asList("1", new RuntimeException(), "2", "3"));
+
+        ReplaySubject<Object> subject = ReplaySubject.create(5);
+
+        observable.subscribe(subject);
+
+        subject.subscribe(subscriber);
     }
 }

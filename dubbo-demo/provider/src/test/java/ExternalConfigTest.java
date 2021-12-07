@@ -10,7 +10,7 @@ import org.springframework.context.annotation.PropertySource;
 /**
  * 外部化配置测试类
  *
- * @author YuKaiFan <yukf@pvc123.com>
+ * @author YuKaiFan
  * @date 2021-05-23
  */
 class ExternalConfigTest {

@@ -6,7 +6,7 @@ import java.lang.annotation.Target;
 /**
  * 只保留在 Class 中的注解
  *
- * @author YuKaiFan <yukf@pvc123.com>
+ * @author YuKaiFan
  * @date 2021/11/30
  */
 @Target(ElementType.TYPE)

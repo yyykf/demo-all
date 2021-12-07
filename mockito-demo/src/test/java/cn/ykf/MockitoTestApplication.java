@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 /**
  * test application
  *
- * @author YuKaiFan <yukf@pvc123.com>
+ * @author YuKaiFan
  * @date 2021/5/7
  */
 @EnableAutoConfiguration

@@ -12,7 +12,7 @@ import java.util.concurrent.locks.LockSupport;
 /**
  * 漏桶算法
  *
- * @author YuKaiFan <yukf@pvc123.com>
+ * @author YuKaiFan
  * @date 2021/10/26
  */
 public class LeakyBucketLimiter implements Limiter {
