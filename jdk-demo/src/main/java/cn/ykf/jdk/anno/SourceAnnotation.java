@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 /**
  * 只保留在源码中的注解
  *
- * @author YuKaiFan <yukf@pvc123.com>
+ * @author YuKaiFan
  * @date 2021/11/30
  */
 @Retention(RetentionPolicy.SOURCE)

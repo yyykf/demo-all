@@ -3,7 +3,7 @@ package cn.ykf.filter;
 /**
  * 过滤器接口
  *
- * @author YuKaiFan <yukf@pvc123.com>
+ * @author YuKaiFan
  * @date 2021/10/29
  */
 public interface Filter {

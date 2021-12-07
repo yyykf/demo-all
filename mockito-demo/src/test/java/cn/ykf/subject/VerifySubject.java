@@ -3,7 +3,7 @@ package cn.ykf.subject;
 /**
  * verify subject
  *
- * @author YuKaiFan <yukf@pvc123.com>
+ * @author YuKaiFan
  * @date 2021/5/7
  */
 public class VerifySubject {

@@ -5,7 +5,7 @@ import org.apache.dubbo.common.extension.SPI;
 /**
  * 日志接口
  *
- * @author YuKaiFan <yukf@pvc123.com>
+ * @author YuKaiFan
  * @date 2021/5/12
  */
 @SPI("log4j")

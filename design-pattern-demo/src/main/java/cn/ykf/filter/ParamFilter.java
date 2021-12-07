@@ -1,7 +1,7 @@
 package cn.ykf.filter;
 
 /**
- * @author YuKaiFan <yukf@pvc123.com>
+ * @author YuKaiFan
  * @date 2021/10/29
  */
 public class ParamFilter extends AbstractFilter{

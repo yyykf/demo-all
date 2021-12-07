@@ -3,7 +3,7 @@ package cn.ykf.observer;
 /**
  * 环境数据展示器，观察者
  *
- * @author YuKaiFan <yukf@pvc123.com>
+ * @author YuKaiFan
  * @date 2021/10/14
  */
 public class EnvDisplay implements Observer {

@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * 令牌桶算法
  *
- * @author YuKaiFan <yukf@pvc123.com>
+ * @author YuKaiFan
  * @date 2021/10/26
  */
 public class TokenBucketLimiter implements Limiter {

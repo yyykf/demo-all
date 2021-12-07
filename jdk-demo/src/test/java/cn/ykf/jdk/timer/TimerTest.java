@@ -11,7 +11,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * 定时器测试类
  * <a href="https://www.baeldung.com/java-timer-and-timertask">Java Timer</a>
  *
- * @author YuKaiFan <yukf@pvc123.com>
+ * @author YuKaiFan
  * @date 2021/6/2
  */
 class TimerTest {

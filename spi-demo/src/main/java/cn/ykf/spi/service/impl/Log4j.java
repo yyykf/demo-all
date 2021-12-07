@@ -5,7 +5,7 @@ import cn.ykf.spi.service.LogService;
 /**
  * log4j 日志实现
  *
- * @author YuKaiFan <yukf@pvc123.com>
+ * @author YuKaiFan
  * @date 2021/5/12
  */
 public class Log4j implements LogService {

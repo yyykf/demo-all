@@ -3,7 +3,7 @@ package cn.ykf.filter;
 /**
  * 过滤器抽象基类
  *
- * @author YuKaiFan <yukf@pvc123.com>
+ * @author YuKaiFan
  * @date 2021/10/29
  */
 public abstract class AbstractFilter implements Filter {

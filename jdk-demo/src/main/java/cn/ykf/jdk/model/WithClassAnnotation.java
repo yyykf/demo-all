@@ -5,7 +5,7 @@ import cn.ykf.jdk.anno.ClassAnnotation;
 /**
  * 使用 WithClassAnnotation 标注的类
  *
- * @author YuKaiFan <yukf@pvc123.com>
+ * @author YuKaiFan
  * @date 2021/11/30
  */
 @ClassAnnotation

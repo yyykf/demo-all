@@ -5,7 +5,7 @@ import cn.ykf.spi.service.LogService;
 /**
  * logback 日志实现
  *
- * @author YuKaiFan <yukf@pvc123.com>
+ * @author YuKaiFan
  * @date 2021/5/12
  */
 public class Logback implements LogService {
