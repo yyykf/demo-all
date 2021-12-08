@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+       http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder properties-ref="yamlProperties"/>
+    
+    <!-- 解析 yml 配置文件 -->
+    <bean id="yamlProperties" class="org.springframework.beans.factory.config.YamlPropertiesFactoryBean">
+        <property name="resources" value="classpath:application.yml"/>
+    </bean>
+
+    <!-- 当前服务-应用的名字（相同服务使用相同名字，不要和其他服务同名） -->
+    <dubbo:application name="${dubbo.application.name}"/>
+
+    <!-- 指定注册中心，开启注册信息简化 -->
+    <dubbo:registry address="${dubbo.registry.address}" check="false" simplified="false"/>
+    <dubbo:metadata-report address="${dubbo.registry.address}"/>
+
+    <!--指定通信规则（通信协议、通信端口等） -->
+    <dubbo:protocol name="dubbo" port="${dubbo.protocol.port}" threads="${dubbo.threads}" threadpool="cached"/>
+
+    <dubbo:provider token="true" loadbalance="roundrobin" timeout="${dubbo.timeout}" cluster="${dubbo.cluster}"
+                    retries="${dubbo.retries}"/>
+
+    <!-- 暴露服务 -->
+    <dubbo:reference interface="cn.ykf.service.DemoService" id="demoService"/>
+</beans>

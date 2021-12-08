@@ -1,0 +1,11 @@
+dubbo:
+  registry:
+    address: zookeeper://127.0.0.1:2181
+  application:
+    name: provider
+  protocol:
+    port: 20880
+  threads: 100
+  timeout: 3000
+  cluster: failover
+  retries: 0
