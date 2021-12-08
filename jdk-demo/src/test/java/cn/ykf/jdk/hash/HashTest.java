@@ -2,6 +2,7 @@ package cn.ykf.jdk.hash;
 
 import cn.hutool.core.util.RandomUtil;
 import cn.ykf.jdk.utils.WordsUtil;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -17,6 +18,29 @@ import java.util.stream.Stream;
  * @date 2021/12/8
  */
 public class HashTest {
+
+    /**
+     * 测试不同乘数下哈希码的统计信息
+     */
+    @Test
+    void testHashCode() {
+        List<RateInfo> rateInfos = HashCode.collisionRateList(WordsUtil.loadWordsFile(), 2, 3, 5, 7, 17, 31, 32, 33, 39,
+                41, 199);
+        rateInfos.forEach(rateInfo -> System.out.printf(
+                "multiplier: %d, minHash: %d, maxHash: %d, collisionCount: %6d, collisionRate: %.4f%%%n ",
+                rateInfo.getMultiplier(), rateInfo.getMinHash(), rateInfo.getMaxHash(),
+                rateInfo.getCollisionCount(), rateInfo.getCollisionRate() * 100));
+
+        System.out.println(Integer.MIN_VALUE + "," + Integer.MAX_VALUE);
+    }
+
+    /**
+     * 测试不同乘数下哈希码的分布情况
+     */
+    @Test
+    void testHashPartition() {
+        HashCode.partitionStatisticsList(WordsUtil.loadWordsFile(), 2, 3, 5, 7, 17, 31).forEach(System.out::println);
+    }
 
     /**
      * 最简单的散列表
