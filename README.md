@@ -1,2 +1,3 @@
-# REPO 说明
-- 本项目用于存放平时学习相关的Demo
+# Demo-all
+
+This repo is used to store demos related to daily learing.
