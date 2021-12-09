@@ -1,8 +1,8 @@
 package cn.ykf.jdk.hash;
 
 import com.google.common.collect.Lists;
-
 import com.google.common.collect.Maps;
+
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -22,7 +22,6 @@ public class HashCode {
      * @param str        待计算哈希值的字符串
      * @param multiplier 乘数
      * @return 哈希值
-     *
      * @see String#hashCode()
      */
     public static int hashCode(String str, int multiplier) {
@@ -57,23 +56,17 @@ public class HashCode {
     }
 
     /**
-     * 统计不同乘数下，哈希码的分布情况
+     * 统计指定乘数下哈希码的分布情况
      *
-     * @param strSet      字符串集合
-     * @param multipliers 不同的乘数
+     * @param strSet     字符串集合
+     * @param multiplier 乘数
      * @return 哈希码分布情况
      */
-    public static List<Map<Integer, Integer>> partitionStatisticsList(Set<String> strSet, Integer... multipliers) {
-        List<Map<Integer, Integer>> statisticsList = Lists.newArrayListWithCapacity(multipliers.length);
-
-        for (Integer multiplier : multipliers) {
-            List<Integer> hashList = strSet.stream().map(str -> HashCode.hashCode(str, multiplier))
-                    .collect(Collectors.toList());
-            // 统计分区情况
-            statisticsList.add(partitionStatistics(hashList));
-        }
-
-        return statisticsList;
+    public static Map<Integer, Integer> partitionStatisticsList(Set<String> strSet, Integer multiplier) {
+        // 计算当前乘数下哈希码分布情况
+        List<Integer> hashList = strSet.stream().map(str -> HashCode.hashCode(str, multiplier)).collect(Collectors.toList());
+        // 统计分区情况
+        return partitionStatistics(hashList);
     }
 
     /**

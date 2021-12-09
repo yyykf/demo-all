@@ -24,6 +24,7 @@ public class HashTest {
      */
     @Test
     void testHashCode() {
+        // 乘数199虽然碰撞几率小，但是用int作为哈希码的话会有溢出
         List<RateInfo> rateInfos = HashCode.collisionRateList(WordsUtil.loadWordsFile(), 2, 3, 5, 7, 17, 31, 32, 33, 39,
                 41, 199);
         rateInfos.forEach(rateInfo -> System.out.printf(
@@ -39,7 +40,17 @@ public class HashTest {
      */
     @Test
     void testHashPartition() {
-        HashCode.partitionStatisticsList(WordsUtil.loadWordsFile(), 2, 3, 5, 7, 17, 31).forEach(System.out::println);
+        System.out.println("Multiplier 2: " + HashCode.partitionStatisticsList(WordsUtil.loadWordsFile(), 2));
+        System.out.println("Multiplier 3: " + HashCode.partitionStatisticsList(WordsUtil.loadWordsFile(), 3));
+        System.out.println("Multiplier 5: " + HashCode.partitionStatisticsList(WordsUtil.loadWordsFile(), 5));
+        System.out.println("Multiplier 7: " + HashCode.partitionStatisticsList(WordsUtil.loadWordsFile(), 7));
+        System.out.println("Multiplier 17: " + HashCode.partitionStatisticsList(WordsUtil.loadWordsFile(), 17));
+        System.out.println("Multiplier 31: " + HashCode.partitionStatisticsList(WordsUtil.loadWordsFile(), 31));
+        System.out.println("Multiplier 32: " + HashCode.partitionStatisticsList(WordsUtil.loadWordsFile(), 32));
+        System.out.println("Multiplier 33: " + HashCode.partitionStatisticsList(WordsUtil.loadWordsFile(), 33));
+        System.out.println("Multiplier 39: " + HashCode.partitionStatisticsList(WordsUtil.loadWordsFile(), 39));
+        System.out.println("Multiplier 41: " + HashCode.partitionStatisticsList(WordsUtil.loadWordsFile(), 41));
+        System.out.println("Multiplier 199: " + HashCode.partitionStatisticsList(WordsUtil.loadWordsFile(), 199));
     }
 
     /**
