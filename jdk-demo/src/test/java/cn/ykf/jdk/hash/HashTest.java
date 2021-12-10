@@ -2,13 +2,14 @@ package cn.ykf.jdk.hash;
 
 import cn.hutool.core.util.RandomUtil;
 import cn.ykf.jdk.utils.WordsUtil;
-import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -79,6 +80,9 @@ public class HashTest {
         System.out.println(Arrays.toString(tab));
     }
 
+    /**
+     * 测试扰动函数
+     */
     @Test
     void testDisturb() {
         // 假设桶长度为128
@@ -105,5 +109,26 @@ public class HashTest {
             System.out.printf("word: %s, idx by disturb: %d, disturbCount: %d, idx without disturb: %d, count: %d%n", word
                     , disturbHashIdx, disturbCount, hashIdx, count);
         });
+    }
+
+    @Test
+    void testHashMap() {
+        List<String> list = Stream.generate(() -> RandomUtil.randomString(6)).limit(10).collect(Collectors.toList());
+
+        for (String key : list) {
+            // 原始hash值
+            int h = key.hashCode();
+            // 扰动函数
+            int hash = h ^ (h >>> 16);
+            // 桶长度为 16 时的哈希值
+            int idx16 = (16 - 1) & hash;
+            // 桶长度为 32 时的哈希值
+            int idx32 = (32 - 1) & hash;
+            // System.out.printf("Key: %s%n",key);
+            System.out.printf("Index(16): %d, hash(binary): %s, (hash & 16): %s%n", idx16, Integer.toBinaryString(hash),
+                    Integer.toBinaryString(hash & 16));
+            System.out.printf("Index(32): %d, hash(binary): %s, hashCode(binary): %s, idx32(binary): %s%n%n", idx32,
+                    Integer.toBinaryString(hash), Integer.toBinaryString(h), Integer.toBinaryString(idx32));
+        }
     }
 }
