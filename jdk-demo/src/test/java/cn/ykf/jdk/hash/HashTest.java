@@ -112,7 +112,7 @@ public class HashTest {
     }
 
     @Test
-    void testHashMap() {
+    void testResize() {
         List<String> list = Stream.generate(() -> RandomUtil.randomString(6)).limit(10).collect(Collectors.toList());
 
         for (String key : list) {
@@ -120,15 +120,19 @@ public class HashTest {
             int h = key.hashCode();
             // 扰动函数
             int hash = h ^ (h >>> 16);
+            // 扰动后的hash值的二进制形式
+            String binaryHash = Integer.toBinaryString(hash);
             // 桶长度为 16 时的哈希值
             int idx16 = (16 - 1) & hash;
             // 桶长度为 32 时的哈希值
             int idx32 = (32 - 1) & hash;
-            // System.out.printf("Key: %s%n",key);
-            System.out.printf("Index(16): %d, hash(binary): %s, (hash & 16): %s%n", idx16, Integer.toBinaryString(hash),
+
+            // 结论：如果原hash值（扰动后） & 扩容长度 == 0，那么该元素在新集合中的索引下标不变，如果不为0，那么新位置 = 原位置 + 扩容长度
+            System.out.printf("Key: %s%n",key);
+            System.out.printf("Index(16): %d, hash(binary): %s, (hash & old bucket size): %s%n", idx16, binaryHash,
                     Integer.toBinaryString(hash & 16));
             System.out.printf("Index(32): %d, hash(binary): %s, hashCode(binary): %s, idx32(binary): %s%n%n", idx32,
-                    Integer.toBinaryString(hash), Integer.toBinaryString(h), Integer.toBinaryString(idx32));
+                    binaryHash, Integer.toBinaryString(h), Integer.toBinaryString(idx32));
         }
     }
 }
