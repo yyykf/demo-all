@@ -24,6 +24,7 @@
         <module>limiter-demo</module>
         <module>rxjava-demo</module>
         <module>springmvc-demo</module>
+        <module>mybatis-demo</module>
     </modules>
 
     <properties>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ykf.mybatis.mapper.UserMapper">
+
+    <select id="selectBySex" resultType="cn.ykf.mybatis.model.User">
+<!--    <select id="selectBySex" resultType="cn.ykf.mybatis.model.User" parameterType="cn.ykf.mybatis.query.UserQuery">-->
+        SELECT *
+        FROM user
+        <where>
+            <if test="query.id != null">
+                AND id = #{query.id}
+            </if>
+            <if test="query.sex != null">
+                AND sex = #{query.sex.sex}
+            </if>
+        </where>
+    </select>
+</mapper>
