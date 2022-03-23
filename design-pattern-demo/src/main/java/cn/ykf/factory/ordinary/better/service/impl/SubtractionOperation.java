@@ -1,0 +1,22 @@
+package cn.ykf.factory.ordinary.better.service.impl;
+
+import cn.ykf.factory.ordinary.better.service.Operation;
+import org.springframework.stereotype.Component;
+
+/**
+ * @author YuKaiFan
+ * @date 2022/3/23
+ */
+@Component
+public class SubtractionOperation implements Operation {
+
+    @Override
+    public Number compute(Number a, Number b) {
+        return a.intValue() - b.intValue();
+    }
+
+    @Override
+    public String getKey() {
+        return "-";
+    }
+}
