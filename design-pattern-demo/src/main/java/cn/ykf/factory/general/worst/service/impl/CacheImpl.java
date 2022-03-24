@@ -1,9 +1,9 @@
 package cn.ykf.factory.general.worst.service.impl;
 
-import cn.ykf.factory.general.worst.cluster.EGM;
-import cn.ykf.factory.general.worst.cluster.IIR;
+import cn.ykf.factory.general.common.cluster.EGM;
+import cn.ykf.factory.general.common.cluster.IIR;
 import cn.ykf.factory.general.worst.service.Cache;
-import cn.ykf.factory.general.worst.utils.RedisUtils;
+import cn.ykf.factory.general.common.utils.RedisUtils;
 import java.util.concurrent.TimeUnit;
 
 /**

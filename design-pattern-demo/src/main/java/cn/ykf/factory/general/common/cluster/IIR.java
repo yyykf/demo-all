@@ -1,4 +1,4 @@
-package cn.ykf.factory.general.worst.cluster;
+package cn.ykf.factory.general.common.cluster;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

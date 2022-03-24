@@ -1,4 +1,4 @@
-package cn.ykf.factory.general.worst.utils;
+package cn.ykf.factory.general.common.utils;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
