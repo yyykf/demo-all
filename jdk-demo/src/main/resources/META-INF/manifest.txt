@@ -1,0 +1,1 @@
+Premain-Class: cn.ykf.jdk.instrumentation.InstrumentationAgent
