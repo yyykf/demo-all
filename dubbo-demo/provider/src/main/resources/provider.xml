@@ -6,14 +6,14 @@
        http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:property-placeholder properties-ref="yamlProperties"/>
-    
+
     <!-- 解析 yml 配置文件 -->
     <bean id="yamlProperties" class="org.springframework.beans.factory.config.YamlPropertiesFactoryBean">
         <property name="resources" value="classpath:application.yml"/>
     </bean>
 
     <!-- 当前服务-应用的名字（相同服务使用相同名字，不要和其他服务同名） -->
-    <dubbo:application name="${dubbo.application.name}"/>
+    <dubbo:application name="${dubbo.application.name}" logger="slf4j"/>
 
     <!-- 指定注册中心，开启注册信息简化 -->
     <dubbo:registry address="${dubbo.registry.address}" check="false" simplified="false"/>
@@ -21,12 +21,27 @@
 
     <!--指定通信规则（通信协议、通信端口等） -->
     <dubbo:protocol name="dubbo" port="${dubbo.protocol.port}" threads="${dubbo.threads}" threadpool="cached"/>
+    <!-- 只有 netty/tomcat/jetty 支持线程池配置。指定 contextPath，如果使用外部容器的话，需要和外部容器的映射保持一致，同时不支持配置线程数，以外部容器为准 -->
+    <!-- netty 还可以额外配置 IO Worker 线程数 iothreads="10" -->
+    <!-- 默认都是使用 http 长连接来访问的，可以使用 keepalive="false" 关闭，只对 netty 和 tomcat 生效 -->
+    <!-- tomcat 支持连接数 accepts="200" -->
+    <!-- use tomcat server -->
+    <dubbo:protocol name="rest" port="8888" server="tomcat" contextpath="rest" threads="500" accepts="500"
+                    extension="cn.ykf.extension.TraceInterceptor,
+                    cn.ykf.extension.CacheControlFilter,
+                    cn.ykf.extension.TraceFilter,
+                    cn.ykf.extension.ClientTraceFilter,
+                    cn.ykf.extension.DynamicTraceBinding,
+                    cn.ykf.extension.CustomExceptionMapper,
+                    org.apache.dubbo.rpc.protocol.rest.support.LoggingFilter"/>
 
-    <dubbo:provider token="true" loadbalance="roundrobin" timeout="${dubbo.timeout}" cluster="${dubbo.cluster}"
+    <dubbo:provider token="false" loadbalance="roundrobin" timeout="${dubbo.timeout}" cluster="${dubbo.cluster}"
                     retries="${dubbo.retries}"/>
 
     <!-- 暴露服务 -->
-    <dubbo:service interface="cn.ykf.service.DemoService" ref="demoService"/>
+    <dubbo:service interface="cn.ykf.service.DemoService" ref="demoService" protocol="dubbo"/>
+    <dubbo:service interface="cn.ykf.service.UserService" ref="restService" protocol="dubbo,rest"/>
 
     <bean id="demoService" class="cn.ykf.service.impl.DemoServiceImpl"/>
+    <bean id="restService" class="cn.ykf.service.impl.UserServiceImpl"/>
 </beans>

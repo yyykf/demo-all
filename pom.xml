@@ -29,7 +29,7 @@
 
     <properties>
         <spring-boot.version>2.4.4</spring-boot.version>
-        <dubbo.version>2.7.3</dubbo.version>
+        <dubbo.version>2.7.11</dubbo.version>
         <hamcrest_version>2.2</hamcrest_version>
         <mockito_version>3.12.4</mockito_version>
     </properties>

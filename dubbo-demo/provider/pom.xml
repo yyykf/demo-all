@@ -18,14 +18,36 @@
             <artifactId>dubbo</artifactId>
             <version>${dubbo.version}</version>
         </dependency>
-        <!-- Zookeeper 依赖 -->
+        <!-- rest -->
         <dependency>
             <groupId>org.apache.dubbo</groupId>
-            <artifactId>dubbo-dependencies-zookeeper</artifactId>
+            <artifactId>dubbo-rpc-rest</artifactId>
             <version>${dubbo.version}</version>
-            <type>pom</type>
         </dependency>
+        <!-- nacos -->
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo-registry-nacos</artifactId>
+            <version>${dubbo.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.nacos</groupId>
+            <artifactId>nacos-spring-context</artifactId>
+            <version>1.1.0</version>
+        </dependency>
+        <!-- Zookeeper -->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.dubbo</groupId>-->
+<!--            <artifactId>dubbo-dependencies-zookeeper</artifactId>-->
+<!--            <version>${dubbo.version}</version>-->
+<!--            <type>pom</type>-->
+<!--        </dependency>-->
 
+        <!-- logback -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+        </dependency>
         <!-- test -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>

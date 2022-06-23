@@ -1,7 +1,7 @@
 import org.apache.dubbo.config.*;
 import org.apache.dubbo.config.spring.context.annotation.EnableDubboConfig;
-import org.apache.dubbo.config.spring.context.annotation.EnableDubboConfigBinding;
-import org.apache.dubbo.config.spring.context.annotation.EnableDubboConfigBindings;
+// import org.apache.dubbo.config.spring.context.annotation.EnableDubboConfigBinding;
+// import org.apache.dubbo.config.spring.context.annotation.EnableDubboConfigBindings;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Configuration;
@@ -102,10 +102,10 @@ class ExternalConfigTest {
     /**
      * 定制化绑定 bean 配置类
      */
-    @EnableDubboConfigBindings({
-            @EnableDubboConfigBinding(prefix = "${applications.prefix}", type = ApplicationConfig.class, multiple = true),
-            @EnableDubboConfigBinding(prefix = "dubbo.module", type = ModuleConfig.class)
-    })
+    // @EnableDubboConfigBindings({
+    //         @EnableDubboConfigBinding(prefix = "${applications.prefix}", type = ApplicationConfig.class, multiple = true),
+    //         @EnableDubboConfigBinding(prefix = "dubbo.module", type = ModuleConfig.class)
+    // })
     @PropertySource("classpath:bindings.properties")
     @Configuration
     public static class DubboBindingConfiguration {
