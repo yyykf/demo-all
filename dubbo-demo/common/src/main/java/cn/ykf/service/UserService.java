@@ -1,5 +1,6 @@
 package cn.ykf.service;
 
+import cn.ykf.common.Result;
 import cn.ykf.model.User;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,5 +17,5 @@ public interface UserService {
 
     User get(HttpServletRequest request, String name, Integer age);
 
-    Boolean registerUser(User user);
+    Result<User> registerUser(User user);
 }

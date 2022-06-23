@@ -17,7 +17,7 @@ public class ProviderApplication {
     private static final Logger LOGGER = LoggerFactory.getLogger(ProviderApplication.class);
 
     public static void main(String[] args) {
-        // 启动后到 zk 查看 /dubbo/cn.ykf.service.DemoService/providers 的节点信息，对比开启注册信息简化前后 URL 区别
+        // 启动后到 zk 查看 /dubbo/cn.ykf.cn.ykf.service.DemoService/providers 的节点信息，对比开启注册信息简化前后 URL 区别
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("provider.xml");
         context.start();
         LOGGER.info("服务已注册...");

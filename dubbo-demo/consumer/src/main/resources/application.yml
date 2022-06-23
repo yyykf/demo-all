@@ -1,3 +1,9 @@
+server:
+  port: 8088
+logging:
+  level:
+    root: info
+
 dubbo:
   registry:
     address: nacos://127.0.0.1:8848

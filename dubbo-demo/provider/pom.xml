@@ -12,6 +12,11 @@
     <artifactId>provider</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>cn.ykf</groupId>
+            <artifactId>common</artifactId>
+        </dependency>
+
         <!-- Dubbo -->
         <dependency>
             <groupId>org.apache.dubbo</groupId>

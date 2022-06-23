@@ -29,16 +29,23 @@ import javax.ws.rs.ext.ExceptionMapper;
 /**
  * 自定义的 Dubbo 异常处理器
  */
-public class CustomExceptionMapper implements ExceptionMapper<NotFoundException> {
+public class CustomExceptionMapper implements ExceptionMapper<Exception> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CustomExceptionMapper.class);
 
-    public Response toResponse(NotFoundException e) {
+    public Response toResponse(Exception e) {
         LOGGER.error("Exception mapper successfully got an exception, Client IP is {}",
                 RpcContext.getContext().getRemoteAddressString(), e);
+        if (e instanceof NotFoundException) {
 
         return Response.status(Response.Status.NOT_FOUND)
                 .entity("Oops! the requested resource is not found!")
+                .type("text/plain").build();
+        }
+
+
+        return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                .entity("Oops! something wrong!")
                 .type("text/plain").build();
     }
 }

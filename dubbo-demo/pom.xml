@@ -14,7 +14,27 @@
     <modules>
         <module>provider</module>
         <module>consumer</module>
+        <module>common</module>
     </modules>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>cn.ykf</groupId>
+                <artifactId>common</artifactId>
+                <version>${version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.ykf</groupId>
+                <artifactId>provider</artifactId>
+                <version>${version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.ykf</groupId>
+                <artifactId>consumer</artifactId>
+                <version>${version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 </project>

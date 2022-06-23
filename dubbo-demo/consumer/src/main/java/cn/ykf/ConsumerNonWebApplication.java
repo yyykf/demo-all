@@ -9,7 +9,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * @author YuKaiFan
  * @date 2021/5/13
  */
-public class ConsumerApplication {
+public class ConsumerNonWebApplication {
 
     public static void main(String[] args) {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("consumer.xml");

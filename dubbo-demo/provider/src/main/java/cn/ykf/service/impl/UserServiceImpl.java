@@ -1,5 +1,6 @@
 package cn.ykf.service.impl;
 
+import cn.ykf.common.Result;
 import cn.ykf.model.User;
 import cn.ykf.service.UserService;
 import org.apache.dubbo.rpc.RpcContext;
@@ -82,9 +83,13 @@ public class UserServiceImpl implements UserService {
     @POST
     @Path("/registerUser")
     @Override
-    public Boolean registerUser(final User user) {
+    public Result<User> registerUser(final User user) {
         LOGGER.info("注册用户: {}", user);
 
-        return db.computeIfAbsent(user.getId(), id -> user) == user;
+        if (db.computeIfAbsent(user.getId(), id -> user) != user) {
+            return Result.fail("重复添加");
+        }
+
+        return Result.succ(user);
     }
 }

@@ -26,5 +26,6 @@
                     retries="${dubbo.retries}"/>
 
     <!-- 暴露服务 -->
-    <dubbo:reference interface="cn.ykf.service.DemoService" id="demoService"/>
+    <dubbo:reference interface="cn.ykf.service.DemoService" id="demoService" check="false"/>
+    <dubbo:reference interface="cn.ykf.service.UserService" id="userService" check="false"/>
 </beans>
